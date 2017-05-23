@@ -31,10 +31,11 @@ struct AriesApiClient {
                     
                     print(responseValue)
                     
-                    guard let responseDictionary = responseValue["response"] as? [String : AnyObject] else { completion([Day](), AriesAPIError.JSONParseError); return }
+                    guard let responseDictionary = responseValue["response"] as? [[String : AnyObject]]
+                        else { completion([Day](), AriesAPIError.JSONParseError); return }
                     
                     
-                    guard let arrayOfDays = responseDictionary["periods"] as? [[String: AnyObject]] else { completion([Day](), AriesAPIError.JSONParseError); return }
+                    guard let arrayOfDays = responseDictionary[0]["periods"] as? [[String: AnyObject]] else { completion([Day](), AriesAPIError.JSONParseError); return }
                     
                     completion(AriesAPIParser.initializeDaysFromJSON(JSONArray: arrayOfDays), nil)
                 }

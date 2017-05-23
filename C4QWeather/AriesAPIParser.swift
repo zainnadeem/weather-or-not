@@ -15,21 +15,23 @@ struct AriesAPIParser {
         var days = [Day]()
         
         for period in JSONArray {
-            if let dateTimeISO = AriesAPIParser.getParam(param: "dateTimeIso", period: period),
-               let minTempF = AriesAPIParser.getParam(param: "minTempF", period: period),
-               let maxTempF = AriesAPIParser.getParam(param: "maxTempF", period: period),
-               let minTempC = AriesAPIParser.getParam(param: "minTempC", period: period),
-               let maxTempC = AriesAPIParser.getParam(param: "maxTempC", period: period){
+            if let dateTimeISO = period["dateTimeISO"],
+               let minTempF = period["minTempF"],
+               let maxTempF = period["maxTempF"],
+               let minTempC = period["minTempC"],
+               let maxTempC = period["maxTempC"],
+               let weatherPrimary = period["weatherPrimary"]{
                 
                 print("###############################")
                 print("dateTimeISO: \(dateTimeISO)")
                 print("minTempF: \(minTempF)")
                 print("maxTempF: \(maxTempF)")
-                print("minTempC: \(minTempF)")
-                print("maxTempC: \(maxTempF)")
+                print("minTempC: \(minTempC)")
+                print("maxTempC: \(maxTempC)")
+                print("weatherPrimary: \(weatherPrimary)")
 
                 
-                let day = Day(dateTimeISO: dateTimeISO, minTempF: minTempF, maxTempF: maxTempF, minTempC: minTempC, maxTempC: maxTempC)
+                let day = Day(dateTimeISO: "\(dateTimeISO)", minTempF: "\(minTempF)", maxTempF: "\(maxTempF)", minTempC: "\(minTempC)", maxTempC: "\(maxTempC)", weatherPrimary: "\(weatherPrimary)")
                 days.append(day)
                 print(day)
                 
@@ -39,18 +41,5 @@ struct AriesAPIParser {
         }
         return days
     }
-
-
-    static func getParam(param: String, period: [String : AnyObject]) -> String? {
-        
-        if let snippet = period[param] as? String {
-            return snippet
-        } else {
-            print("Could not get param")
-            return nil
-        }
-    }
-
-
 
 }

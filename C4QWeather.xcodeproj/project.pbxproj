@@ -18,6 +18,8 @@
 		BFAD8DFB1ED3D15700E5373B /* AriesAPIParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAD8DFA1ED3D15700E5373B /* AriesAPIParser.swift */; };
 		BFAD8DFD1ED3D84E00E5373B /* ForecastTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAD8DFC1ED3D84E00E5373B /* ForecastTableViewController.swift */; };
 		BFAD8DFF1ED3D92500E5373B /* ForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAD8DFE1ED3D92500E5373B /* ForecastTableViewCell.swift */; };
+		BFAD8E011ED3FA4E00E5373B /* NavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAD8E001ED3FA4E00E5373B /* NavBarView.swift */; };
+		BFAD8E031ED4178B00E5373B /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAD8E021ED4178B00E5373B /* Extentions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		BFAD8DFA1ED3D15700E5373B /* AriesAPIParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AriesAPIParser.swift; sourceTree = "<group>"; };
 		BFAD8DFC1ED3D84E00E5373B /* ForecastTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastTableViewController.swift; sourceTree = "<group>"; };
 		BFAD8DFE1ED3D92500E5373B /* ForecastTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastTableViewCell.swift; sourceTree = "<group>"; };
+		BFAD8E001ED3FA4E00E5373B /* NavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavBarView.swift; sourceTree = "<group>"; };
+		BFAD8E021ED4178B00E5373B /* Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,18 +93,44 @@
 			isa = PBXGroup;
 			children = (
 				BF4ED8981ED3B58200A0C00C /* AppDelegate.swift */,
-				BFAD8DF81ED3CFF100E5373B /* APIClientAries.swift */,
-				BFAD8DFA1ED3D15700E5373B /* AriesAPIParser.swift */,
-				BFAD8DF21ED3BD4F00E5373B /* Day.swift */,
-				BFAD8DFC1ED3D84E00E5373B /* ForecastTableViewController.swift */,
+				BFAD8E041ED4183200E5373B /* UI */,
+				BFAD8E051ED4184200E5373B /* Helpers */,
+				BFAD8E061ED4185E00E5373B /* Models */,
 				BF4ED8AE1ED3B6DD00A0C00C /* Secrets.swift */,
-				BFAD8DFE1ED3D92500E5373B /* ForecastTableViewCell.swift */,
 				BF4ED89C1ED3B58200A0C00C /* Main.storyboard */,
 				BF4ED89F1ED3B58200A0C00C /* Assets.xcassets */,
 				BF4ED8A11ED3B58200A0C00C /* LaunchScreen.storyboard */,
 				BF4ED8A41ED3B58200A0C00C /* Info.plist */,
 			);
 			path = C4QWeather;
+			sourceTree = "<group>";
+		};
+		BFAD8E041ED4183200E5373B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				BFAD8E001ED3FA4E00E5373B /* NavBarView.swift */,
+				BFAD8DFC1ED3D84E00E5373B /* ForecastTableViewController.swift */,
+				BFAD8DFE1ED3D92500E5373B /* ForecastTableViewCell.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		BFAD8E051ED4184200E5373B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BFAD8DFA1ED3D15700E5373B /* AriesAPIParser.swift */,
+				BFAD8E021ED4178B00E5373B /* Extentions.swift */,
+				BFAD8DF81ED3CFF100E5373B /* APIClientAries.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		BFAD8E061ED4185E00E5373B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BFAD8DF21ED3BD4F00E5373B /* Day.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFAD8E011ED3FA4E00E5373B /* NavBarView.swift in Sources */,
 				BFAD8DF91ED3CFF100E5373B /* APIClientAries.swift in Sources */,
 				BFAD8DFD1ED3D84E00E5373B /* ForecastTableViewController.swift in Sources */,
 				BFAD8DFB1ED3D15700E5373B /* AriesAPIParser.swift in Sources */,
@@ -234,6 +265,7 @@
 				BFAD8DFF1ED3D92500E5373B /* ForecastTableViewCell.swift in Sources */,
 				BFAD8DF31ED3BD4F00E5373B /* Day.swift in Sources */,
 				BF4ED8991ED3B58200A0C00C /* AppDelegate.swift in Sources */,
+				BFAD8E031ED4178B00E5373B /* Extentions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

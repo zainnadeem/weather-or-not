@@ -9,6 +9,18 @@
 import UIKit
 import SnapKit
 
+enum scale {
+    case Fahrenheit
+    case Celsius
+}
+
+enum weatherConditions: String {
+    case Showers = "Showers"
+    case ScatteredShowers = "Scattered Showers"
+    case PartlyCloudy = "Partly Cloudy"
+    case Sunny = "Sunny"
+}
+
 class ForecastTableViewCell: UITableViewCell {
 
     lazy var weatherImageView           : UIImageView = UIImageView()
@@ -19,9 +31,9 @@ class ForecastTableViewCell: UITableViewCell {
     lazy var leftStackView              : UIStackView = UIStackView()
     lazy var rightStackView             : UIStackView = UIStackView()
 
-    
-    lazy var borderWidth                  : CGFloat =       3.0
     lazy var profileImageHeightMultiplier : CGFloat =      (0.5)
+    
+    var scale: scale!
     
     var day: Day! {
         didSet {
@@ -46,11 +58,32 @@ class ForecastTableViewCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
 
-    
     func updateUI(){
-        dateLabel.text = day.dateTimeISO
-        minTempLabel.text = day.minTempC
-        maxTempLabel.text = day.maxTempC
+
+        self.dateLabel.text = day.dateTimeISO
+        
+        if scale.hashValue == 0 {
+
+            minTempLabel.text = "Low: \(day.minTempF)"
+            maxTempLabel.text = "High: \(day.maxTempF)"
+            
+        }else{
+            minTempLabel.text = "Low: \(day.minTempC)"
+            maxTempLabel.text = "High: \(day.maxTempC)"
+        }
+        
+        
+        switch day.weatherPrimary {
+        case weatherConditions.PartlyCloudy.rawValue:
+            weatherImageView.image = #imageLiteral(resourceName: "clouds")
+        case weatherConditions.ScatteredShowers.rawValue:
+            weatherImageView.image = #imageLiteral(resourceName: "umbrella")
+        case weatherConditions.Showers.rawValue:
+            weatherImageView.image = #imageLiteral(resourceName: "rain")
+        default:
+            print("didnt set image yet")
+        }
+        
         setImageViewCircular()
     }
     
@@ -89,7 +122,7 @@ class ForecastTableViewCell: UITableViewCell {
     }
     
     func createStackViews(){
-        leftStackView = UIStackView(arrangedSubviews: [minTempLabel, maxTempLabel, dateLabel])
+        leftStackView = UIStackView(arrangedSubviews: [dateLabel, minTempLabel, maxTempLabel])
         leftStackView.axis = .vertical
         leftStackView.distribution = .fillProportionally
         leftStackView.alignment = .leading
@@ -107,8 +140,6 @@ class ForecastTableViewCell: UITableViewCell {
         self.weatherImageView.contentMode = .scaleAspectFill
         self.weatherImageView.isUserInteractionEnabled = true
         self.weatherImageView.layer.cornerRadius = self.frame.height * profileImageHeightMultiplier / 2
-        self.weatherImageView.layer.borderColor = UIColor.black.cgColor
-        self.weatherImageView.layer.borderWidth = borderWidth
         self.weatherImageView.clipsToBounds = true
     }
     
