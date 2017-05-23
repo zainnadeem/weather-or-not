@@ -7,3 +7,25 @@
 //
 
 import Foundation
+
+import UIKit
+
+class Day {
+    let dateTimeISO: String
+    let minTempF: String
+    let maxTempF: String
+    let minTempC: String
+    let maxTempC: String
+
+
+    
+    init(dateTimeISO: String, minTempF: String, maxTempF: String, minTempC: String, maxTempC: String) {
+        self.dateTimeISO = dateTimeISO
+        self.minTempF = minTempF
+        self.maxTempF = maxTempF
+        self.minTempC = minTempC
+        self.maxTempC = maxTempC
+
+}
+
+}
