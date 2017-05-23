@@ -19,7 +19,7 @@ class ForecastTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        AriesApiClient.getLocationsWithCompletion { (days, error) in
+        AriesApiClient.getDaysWithCompletion { (days, error) in
             self.days = days
         }
         self.tableView.register(ForecastTableViewCell.self, forCellReuseIdentifier: dayTableViewCellIdentifier)

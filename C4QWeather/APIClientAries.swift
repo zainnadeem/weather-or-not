@@ -17,7 +17,7 @@ struct AriesApiClient {
         case JSONParseError
     }
     
-    static func getLocationsWithCompletion(completion: @escaping DayCompletion) {
+    static func getDaysWithCompletion(completion: @escaping DayCompletion) {
         
         Alamofire.request("https://api.aerisapi.com/forecasts/11101?client_id=\(accessKey)&client_secret=\(secretKey)")
             .responseJSON { response in
@@ -29,12 +29,12 @@ struct AriesApiClient {
                 case .success(let value):
                     guard let responseValue = value as? NSDictionary else { completion([Day](), AriesAPIError.JSONParseError); return }
                     
+                    print(responseValue)
+                    
                     guard let responseDictionary = responseValue["response"] as? [String : AnyObject] else { completion([Day](), AriesAPIError.JSONParseError); return }
                     
+                    
                     guard let arrayOfDays = responseDictionary["periods"] as? [[String: AnyObject]] else { completion([Day](), AriesAPIError.JSONParseError); return }
-                    
-                    
-                    print(arrayOfDays)
                     
                     completion(AriesAPIParser.initializeDaysFromJSON(JSONArray: arrayOfDays), nil)
                 }
